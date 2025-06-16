@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900601185166",
+    "project_id": "shop-mart-c34fc",
+    "storage_bucket": "shop-mart-c34fc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900601185166:android:3e618be539d7cb28dbdadf",
+        "android_client_info": {
+          "package_name": "com.jose.shopmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC62o3ZjlJf4Pb8K-jD_4J3YXMOPKP1-rk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
