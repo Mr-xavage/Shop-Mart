@@ -21,15 +21,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.PillButton
+import com.jose.shopmart.component.ProgressBox
+import com.jose.shopmart.component.TextBox3
 
 
 @Composable
@@ -46,7 +50,9 @@ fun EditAddressScreen(navController: NavHostController,viewModel: AddressViewMod
         addressState.value = it
     }
 
-    Scaffold(topBar = { BackButton(navController = navController, topBarTitle = "Edit Address")}, backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+    Scaffold(topBar = { BackButton(navController = navController,
+        topBarTitle = "Edit Address")},
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Orchid) { innerPadding ->
 
         Column(
             modifier = Modifier.padding(innerPadding),
@@ -70,7 +76,7 @@ fun EditAddressScreen(navController: NavHostController,viewModel: AddressViewMod
                     horizontalArrangement = Arrangement.Center
                 ) {
 
-                    ProgressBox(number = "1", title = "Address", color = ShopKartUtils.blue)
+                    ProgressBox(number = "1", title = "Address", color = com.jose.shopmart.ShopKartUtils.blue)
                     Divider(
                         modifier = Modifier
                             .height(2.dp)
@@ -86,12 +92,32 @@ fun EditAddressScreen(navController: NavHostController,viewModel: AddressViewMod
                 }
             }
 
-            TextBox3(label = "Name", value = nameState.value, onChange = nameState, modifier = Modifier.padding(top = 20.dp))
-            TextBox3(label = "Address", value = addressState.value, onChange = addressState, isSingleLine = false)
-            TextBox3(label = "Phone no", value = phoneState.value, onChange = phoneState, keyBoardType = KeyboardType.Number, imeAction = ImeAction.Done)
-            Text(text = errorState.value, style = TextStyle(fontSize = 15.sp, fontFamily = roboto, fontWeight = FontWeight.Bold), color = Color.Red)
+            TextBox3(label = "Name",
+                value = nameState.value,
+                onChange = nameState,
+                modifier = Modifier.padding(top = 20.dp))
 
-            PillButton(title = "Update Address", color = ShopKartUtils.black.toInt(), modifier = Modifier.padding(top = 12.dp)){
+            TextBox3(label = "Address",
+                value = addressState.value,
+                onChange = addressState,
+                isSingleLine = false)
+
+            TextBox3(label = "Phone no",
+                value = phoneState.value,
+                onChange = phoneState,
+                keyBoardType = KeyboardType.Number,
+                imeAction = ImeAction.Done)
+
+            Text(text = errorState.value,
+                style = TextStyle(fontSize = 15.sp,
+                    fontFamily = FontFamily.Default,
+                    fontWeight = FontWeight.Bold),
+                color = Color.Red)
+
+            PillButton(
+                title = "Update Address",
+                color = com.jose.shopmart.ShopKartUtils.Purple50,
+                modifier = Modifier.padding(top = 12.dp)){
 
                 if (phoneState.value.length > 10 || phoneState.value.length <= 9){
                     errorState.value = "Enter a valid number"

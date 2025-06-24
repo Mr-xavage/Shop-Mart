@@ -1,7 +1,5 @@
 package com.jose.shopmart.screens.employee.orderstatus
 
-
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +18,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,29 +27,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.google.firebase.messaging.FirebaseMessaging
 import com.jose.shopmart.R
 import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.component.BackButton
 import com.jose.shopmart.component.DeliveryStatusCard
 import com.jose.shopmart.models.MOrder
 import com.jose.shopmart.navigation.BottomNavScreens
-import com.jose.shopmart.screens.admin.orderstatus.OrderStatusViewModel
 import com.jose.shopmart.screens.search.SearchBox
 
-
 @Composable
-fun OrderedItems(navHostController: NavHostController,viewModel: OrderStatusViewModel = hiltViewModel()){
+fun OrderedItemsEmp(navHostController: NavHostController,viewModel: OrderStatusEmpViewModel = hiltViewModel()){
 
     val orderedItemsList = remember { mutableStateOf(emptyList<MOrder>()) }
 
     val searchByOrderId = remember { mutableStateOf("") }
 
-    val title = remember { mutableStateOf("Delivered") }
-    val message = remember { mutableStateOf("Your Item is delivered") }
-
     val context = LocalContext.current
-    val scope = rememberCoroutineScope()
 
     orderedItemsList.value = viewModel.fireStatus.value.data?.toList()?.filter { mOrder ->
 
@@ -60,16 +50,15 @@ fun OrderedItems(navHostController: NavHostController,viewModel: OrderStatusView
 
     }!!
 
-    FirebaseMessaging.getInstance().subscribeToTopic(ShopKartUtils.TOPIC)
-
     Scaffold(modifier = Modifier.fillMaxSize(),
         topBar = { BackButton(navController = navHostController,
             topBarTitle = "Ordered Items", spacing = 50.dp) },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = ShopKartUtils.Teal) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)
-            .fillMaxSize(), verticalArrangement = Arrangement.Top,
+            .fillMaxSize(),
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
 
             Row(modifier = Modifier.fillMaxWidth(),
@@ -81,15 +70,14 @@ fun OrderedItems(navHostController: NavHostController,viewModel: OrderStatusView
                     leadingIcon = R.drawable.ic_search,
                     placeHolder = "Search by Order Id",
                     customAutoFocus = false)
-                //Search Button
 
+                //Search Button
                 IconButton(modifier = Modifier
                     .size(55.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .background(Color.Black),
                     onClick = {
                         orderedItemsList.value = viewModel.fireStatus.value.data?.toList()?.filter { mOrder ->
-
                             mOrder.order_id == searchByOrderId.value
                         }!!
                     }){
@@ -103,15 +91,13 @@ fun OrderedItems(navHostController: NavHostController,viewModel: OrderStatusView
 
             LazyColumn{
                 items(items = orderedItemsList.value){ ordered ->
-                    DeliveryStatusCard(ordered = ordered,
-                        buttonTitle = "Mark On The Way",
-                        navHostController = navHostController){
+                    DeliveryStatusCard(ordered = ordered, buttonTitle = "Mark On The Way", navHostController = navHostController){
                         viewModel.markOnTheWay(
                             userId = ordered.user_id!!,
                             product_title = ordered.product_title!!
                         ) {
                             navHostController.popBackStack()
-                            navHostController.navigate(BottomNavScreens.OrderedItems.route)
+                            navHostController.navigate(BottomNavScreens.OrderedItemsEmp.route)
                             Toast.makeText(context, "Item marked as On The Way", Toast.LENGTH_SHORT).show()
                         }
                     }

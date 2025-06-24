@@ -56,7 +56,7 @@ fun DeliveredItems(navHostController: NavHostController,
                 topBarTitle = "Delivered Items", spacing = 50.dp
             )
         },
-        backgroundColor = ShopKartUtils.offWhite
+        backgroundColor = ShopKartUtils.Yellow100,
     ) { innerPadding ->
 
         Column(

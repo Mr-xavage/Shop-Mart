@@ -178,7 +178,9 @@ fun OrdersCardItem(mOrder: MOrder, navController: NavController) {
             ) {
                 Text(
                     text = mOrder.product_title!!,
-                    style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Default),
+                    style = TextStyle(fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default),
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
                     modifier = Modifier.width(200.dp)
@@ -186,7 +188,9 @@ fun OrdersCardItem(mOrder: MOrder, navController: NavController) {
 
                 Text(
                     text = mOrder.product_description!!,
-                    style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Normal, fontFamily = FontFamily.Default),
+                    style = TextStyle(fontSize = 12.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = FontFamily.Default),
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
                     modifier = Modifier.width(180.dp)
@@ -209,7 +213,9 @@ fun OrdersCardItem(mOrder: MOrder, navController: NavController) {
 
                     Text(
                         text = mOrder.delivery_status!!,
-                        style = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Default),
+                        style = TextStyle(fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Default),
                         modifier = Modifier.padding(top = 8.dp)
                     )
 

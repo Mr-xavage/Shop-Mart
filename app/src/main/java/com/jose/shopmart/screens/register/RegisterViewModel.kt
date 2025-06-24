@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.jose.shopmart.models.MUser
 import kotlinx.coroutines.launch
 
 class RegisterViewModel:ViewModel() {

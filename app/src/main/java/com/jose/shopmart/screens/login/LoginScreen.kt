@@ -3,7 +3,6 @@ package com.jose.shopmart.screens.login
 
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
-import android.provider.ContactsContract.CommonDataKinds.Identity
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
@@ -49,15 +48,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.firebase.auth.FirebaseAuth
 import com.jose.shopmart.R
 import com.jose.shopmart.component.LoadingCompAuth
 import com.jose.shopmart.component.PasswordTextBox
 import com.jose.shopmart.component.PillButton
 import com.jose.shopmart.component.TextBox
 import com.jose.shopmart.navigation.NavScreens
-import com.jose.shopmart.screens.admin.ShopKartUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -82,7 +78,7 @@ fun LoginScreen(navController: NavController,viewModel: LoginViewModel = android
     val scope = rememberCoroutineScope()
 
     val googleAuthUiClient = GoogleAuthUiClient(context = context,
-        oneTapClient = Identity.getSignInClient(context))
+        oneTapClient = com.google.android.gms.auth.api.identity.Identity.getSignInClient(context))
 
     val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartIntentSenderForResult(),
         onResult = { result ->
@@ -97,7 +93,7 @@ fun LoginScreen(navController: NavController,viewModel: LoginViewModel = android
 
 
 
-    Surface(modifier = Modifier.fillMaxSize(), color = ShopKartUtils.offWhite) {
+    Surface(modifier = Modifier.fillMaxSize(), color = com.jose.shopmart.ShopKartUtils.SoftRed) {
 
         BoxWithConstraints(
             modifier = Modifier.width(width.dp).height(height.dp),
@@ -174,7 +170,7 @@ fun LoginScreen(navController: NavController,viewModel: LoginViewModel = android
 
                 //Show Loading composable if isLoading false else shew PillButton
                 if (isLoading.value) LoadingCompAuth()
-                else PillButton(title = "Login", color = 0xFF3D77E3.toInt(), onClick = {
+                else PillButton(title = "Login", color = Color.LightGray, onClick = {
                     if (emailState.value.trim().isNotEmpty() && passwordState.value.trim()
                             .isNotEmpty()
                     ) {

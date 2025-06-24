@@ -1,6 +1,5 @@
 package com.jose.shopmart.navigation
 
-
 enum class NavScreens {
     SplashScreen,
     RegisterScreen,

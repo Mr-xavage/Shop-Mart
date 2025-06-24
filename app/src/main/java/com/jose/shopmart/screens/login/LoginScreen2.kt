@@ -2,7 +2,6 @@ package com.jose.shopmart.screens.login
 
 
 import android.app.Activity
-import android.provider.ContactsContract.CommonDataKinds.Identity
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.IntentSenderRequest
@@ -45,7 +44,6 @@ import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.google.android.gms.auth.api.identity.Identity
 import com.jose.shopmart.R
 import com.jose.shopmart.component.LoadingCompAuth
 import com.jose.shopmart.component.PasswordTextBox
@@ -72,7 +70,7 @@ fun LoginScreen2(navController: NavController,viewModel: LoginViewModel =  andro
     val scope = rememberCoroutineScope()
 
     val googleAuthUiClient = GoogleAuthUiClient(context = context,
-        oneTapClient = Identity.getSignInClient(context))
+        oneTapClient = com.google.android.gms.auth.api.identity.Identity.getSignInClient(context))
 
     val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartIntentSenderForResult(),
         onResult = { result ->
@@ -273,7 +271,9 @@ fun LoginScreen2(navController: NavController,viewModel: LoginViewModel =  andro
         //Show Loading composable if isLoading false else shew PillButton
         if (isLoading.value) LoadingCompAuth(modifier = Modifier.layoutId("loadingComp"))
 
-        else PillButton(title = "Login", color = 0xFF3D77E3.toInt(),
+        else PillButton(
+            title = "Login",
+            color = Color.Magenta,
             modifier = Modifier.layoutId("loginButton").padding(top = 10.dp, bottom = 10.dp), onClick = {
                 if(emailState.value.trim().isNotEmpty() && passwordState.value.trim().isNotEmpty()){
 

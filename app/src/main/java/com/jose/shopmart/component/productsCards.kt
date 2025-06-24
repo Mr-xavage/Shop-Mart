@@ -44,7 +44,8 @@ fun ProductCard(
     navController: NavController,
     onAddToCartClick: (MProducts) -> Unit
 ) {
-    LazyRow(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 10.dp)) {
+    LazyRow(modifier = Modifier.padding(start = 20.dp,
+        end = 20.dp, top = 10.dp)) {
         items(items = cardItem) { mProduct ->
             CardItem(
                 mProducts = mProduct,

@@ -32,7 +32,7 @@ fun EmployeeScreen(navController: NavController,
         BackButton(navController = navController,
             topBarTitle = "Employee")
     },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Green100) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)

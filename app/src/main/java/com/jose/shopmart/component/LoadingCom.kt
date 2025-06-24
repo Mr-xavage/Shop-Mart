@@ -18,7 +18,7 @@ import com.jose.shopmart.ShopKartUtils
 //Progress Bar
 @Composable
 fun LoadingComp() {
-    Column(modifier = Modifier.fillMaxSize().background(ShopKartUtils.offWhite),
+    Column(modifier = Modifier.fillMaxSize().background(ShopKartUtils.Lavender),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
 
         Spacer(modifier = Modifier.height(250.dp))
@@ -29,7 +29,7 @@ fun LoadingComp() {
 
 @Composable
 fun LoadingComp2() {
-    Column(modifier = Modifier.fillMaxSize().background(ShopKartUtils.offWhite),
+    Column(modifier = Modifier.fillMaxSize().background(ShopKartUtils.Red600),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
 
 //        Spacer(modifier = Modifier.height(250.dp))

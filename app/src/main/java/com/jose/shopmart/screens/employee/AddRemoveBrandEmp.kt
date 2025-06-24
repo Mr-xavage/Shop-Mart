@@ -28,7 +28,6 @@ import com.jose.shopmart.component.GalleryLaunchComp
 import com.jose.shopmart.component.PillButton
 import com.jose.shopmart.component.SelectedImageItem
 import com.jose.shopmart.component.TextBox2
-import com.jose.shopmart.screens.admin.ShopKartUtils
 
 @Composable
 fun AddRemoveBrandEmpl(navHostController: NavHostController,viewModel: EmployeeScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()){
@@ -48,7 +47,7 @@ fun AddRemoveBrandEmpl(navHostController: NavHostController,viewModel: EmployeeS
             BackButton(navController = navHostController,
                 topBarTitle = "Add/Remove Brand", spacing = 30.dp)
         },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Gray900) { innerPadding ->
 
         Column(horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -74,7 +73,7 @@ fun AddRemoveBrandEmpl(navHostController: NavHostController,viewModel: EmployeeS
 
             PillButton(
                 title = "Add Brand",
-                color = ShopKartUtils.black.toInt(),
+                color = com.jose.shopmart.ShopKartUtils.Red600,
                 modifier = Modifier.padding(bottom = 20.dp, top = 10.dp)
             ) {
                 if (selectedBrandImageUri.value == null) {
@@ -89,7 +88,6 @@ fun AddRemoveBrandEmpl(navHostController: NavHostController,viewModel: EmployeeS
                     ) { selectedBrandImageUri.value = null }
                     Toast.makeText(context, "Brand Added", Toast.LENGTH_SHORT).show()
                 }
-
             }
 
             Divider(modifier = Modifier.padding(bottom = 10.dp))
@@ -97,7 +95,7 @@ fun AddRemoveBrandEmpl(navHostController: NavHostController,viewModel: EmployeeS
             //Remove brand
             TextBox2(value = brandName.value, onChange = brandName, placeHolder = "Brand Name")
 
-            PillButton(title = "Remove Brand", color = ShopKartUtils.black.toInt()){
+            PillButton(title = "Remove Brand", color = com.jose.shopmart.ShopKartUtils.BabyBlue,){
                 if (brandName.value.isNotEmpty()){
                     viewModel.removeBrand(brandName = brandName.value)
                     navHostController.popBackStack()

@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.component.BackButton
 import com.jose.shopmart.component.GalleryLaunchComp
 import com.jose.shopmart.component.PillButton
@@ -90,7 +91,7 @@ fun AddProductSliderAdmin(
         },
         modifier = Modifier
             .fillMaxSize(),
-        backgroundColor = ShopKartUtils.offWhite
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Yellow50
     ) { innerPadding ->
 
         Column(
@@ -103,7 +104,9 @@ fun AddProductSliderAdmin(
 
             //Upload Sliders text
             Text(
-                text = "Upload Slider", modifier = Modifier.padding(start = 30.dp, top = 20.dp),
+                text = "Upload Slider",
+                modifier = Modifier.padding(start = 30.dp,
+                    top = 20.dp),
                 style = TextStyle(
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
@@ -121,7 +124,7 @@ fun AddProductSliderAdmin(
 
             PillButton(
                 title = "Post Slider",
-                color = ShopKartUtils.black.toInt(),
+                color = com.jose.shopmart.ShopKartUtils.SkyBlue,
                 modifier = Modifier
                     .padding(bottom = 20.dp, top = 10.dp)
                     .align(Alignment.CenterHorizontally)
@@ -243,7 +246,7 @@ fun AddProductSliderAdmin(
 
                 PillButton(
                     title = "Post Product",
-                    color = ShopKartUtils.black.toInt(),
+                    color = ShopKartUtils.Lavender,
                     modifier = Modifier
                         .padding(bottom = 25.dp)
                         .align(Alignment.CenterHorizontally)

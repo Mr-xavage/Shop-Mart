@@ -54,7 +54,7 @@ fun OnTheWayItems(navHostController: NavHostController, viewModel: OrderStatusVi
     Scaffold(modifier = Modifier.fillMaxSize(),
         topBar = { BackButton(navController = navHostController,
             topBarTitle = "On The Way Items", spacing = 35.dp) },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = ShopKartUtils.Green400) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)

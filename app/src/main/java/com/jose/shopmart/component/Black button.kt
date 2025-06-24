@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -56,7 +57,9 @@ fun BackButton(modifier: Modifier = Modifier,
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 30.dp, top = 30.dp, bottom = 8.dp),
+            .padding(start = 30.dp,
+                top = 30.dp,
+                bottom = 8.dp),
         horizontalArrangement = topBarArrangement
     ) {
 
@@ -81,14 +84,21 @@ fun BackButton(modifier: Modifier = Modifier,
 
         Spacer(modifier = Modifier.width(spacing))
 
-        Text(text = topBarTitle, style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, fontFamily = roboto), modifier = Modifier.padding(top = 10.dp))
+        Text(text = topBarTitle,
+            style = TextStyle(fontSize = 20.sp,
+                fontWeight = FontWeight.ExtraBold,
+                fontFamily = FontFamily.Serif
+            ),
+            modifier = Modifier.padding(top = 10.dp))
 
         if (topBarTitle == "Details"){
             if (email.value.contains("admin.") || email.value.contains("employee.")){
 
                 Spacer(modifier = Modifier.width(80.dp))
 
-                Icon(painter = painterResource(id = R.drawable.delete), contentDescription = "Delete Product", tint = Color.Black,
+                Icon(painter = painterResource(id = R.drawable.delete),
+                    contentDescription = "Delete Product",
+                    tint = Color.Black,
                     modifier = Modifier
                         .size(40.dp)
                         .padding(end = 15.dp)

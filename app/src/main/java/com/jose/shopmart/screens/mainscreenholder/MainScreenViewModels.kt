@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.firebase.auth.FirebaseAuth
+import com.jose.shopmart.navigation.NavScreens
 import kotlinx.coroutines.launch
 
 class MainScreenViewModel: ViewModel() {

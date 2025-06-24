@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,6 +52,15 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.PillButton
+import com.jose.shopmart.component.ProgressBox
+import com.jose.shopmart.component.TextBox2
+import com.jose.shopmart.models.MCart
+import com.jose.shopmart.navigation.BottomNavScreens
+import com.jose.shopmart.screens.checkout.ordersummary.OrderSummaryScreenViewModel
 import java.text.DecimalFormat
 
 
@@ -137,8 +147,9 @@ fun PaymentScreen(
     }
 
 
-    Scaffold(topBar = { BackButton(navController = navController, topBarTitle = "Payment") },
-        backgroundColor = ShopKartUtils.offWhite, bottomBar = {
+    Scaffold(topBar = { BackButton(navController = navController,
+        topBarTitle = "Payment") },
+        backgroundColor = ShopKartUtils.Lavender, bottomBar = {
             PaymentBottomBar(
                 totalAmount = totalAmount,
                 creditCard = creditCard.value,
@@ -199,7 +210,7 @@ fun PaymentScreen(
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = roboto
+                    fontFamily = FontFamily.Serif
                 ),
                 modifier = Modifier
                     .layoutId("PaymentMethodTitle")
@@ -248,7 +259,7 @@ fun PaymentScreen(
                                 style = TextStyle(
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Medium,
-                                    fontFamily = roboto
+                                    fontFamily = FontFamily.Serif
                                 ),
                                 modifier = Modifier.fillMaxWidth()
                             )
@@ -293,14 +304,22 @@ fun CardPayment(
         Text(
             modifier = Modifier.padding(start = 10.dp),
             text = "Name",
-            style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Bold, fontFamily = roboto),
+            style = TextStyle(fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Serif),
             color = Color.Black.copy(0.4f)
         )
-        TextBox2(value = name.value, onChange = name, placeHolder = "ShopKart")
+        TextBox2(value = name.value,
+            onChange = name,
+            placeHolder = "ShopKart")
+
         Text(
-            modifier = Modifier.padding(start = 10.dp, top = 10.dp),
+            modifier = Modifier.padding(start = 10.dp,
+                top = 10.dp),
             text = "Card Number",
-            style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Bold, fontFamily = roboto),
+            style = TextStyle(fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Serif),
             color = Color.Black.copy(0.4f)
         )
         TextBox2(
@@ -313,7 +332,8 @@ fun CardPayment(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 10.dp), horizontalArrangement = Arrangement.Start
+                .padding(top = 10.dp),
+            horizontalArrangement = Arrangement.Start
         ) {
 
             Text(
@@ -322,7 +342,7 @@ fun CardPayment(
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = roboto
+                    fontFamily = FontFamily.Serif
                 ),
                 color = Color.Black.copy(0.4f)
             )
@@ -333,7 +353,7 @@ fun CardPayment(
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    fontFamily = roboto
+                    fontFamily = FontFamily.Serif
                 ),
                 color = Color.Black.copy(0.4f)
             )
@@ -391,12 +411,14 @@ fun PaymentBottomBar(
                     totalAmount.toString().toDouble()
                 )
             }",
-            style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = roboto)
+            style = TextStyle(fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Serif)
         )
 
         PillButton(
             title = "Confirm Order",
-            color = ShopKartUtils.black.toInt(),
+            color = ShopKartUtils.Primary400,
             modifier = Modifier.padding(top = 5.dp)
         ) {
 
@@ -440,7 +462,7 @@ fun PaymentBottomBar(
             style = TextStyle(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Normal,
-                fontFamily = roboto,
+                fontFamily = FontFamily.Serif,
                 color = Color.Black.copy(alpha = 0.5f)
             )
         )

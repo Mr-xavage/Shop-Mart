@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -75,7 +76,10 @@ fun CartCard(cardList: List<MCart>,viewModel: CartScreenViewModel,
 
 
         for (card in cardList){
-            CartCardItem(mCart = card, viewModel = viewModel, navController = navController, price = {price -> priceList.add(price) })
+            CartCardItem(mCart = card,
+                viewModel = viewModel,
+                navController = navController,
+                price = {price -> priceList.add(price) })
         }
 
     }
@@ -101,7 +105,10 @@ fun CartCardItem(mCart: MCart,viewModel: CartScreenViewModel,
     Surface(modifier = Modifier
         .fillMaxWidth()
         .height(140.dp)
-        .padding(start = 20.dp, end = 20.dp, top = 5.dp, bottom = 8.dp),
+        .padding(start = 20.dp,
+            end = 20.dp,
+            top = 5.dp,
+            bottom = 8.dp),
         shape = RoundedCornerShape(12.dp)
     ) {
 
@@ -138,12 +145,17 @@ fun CartCardItem(mCart: MCart,viewModel: CartScreenViewModel,
 
                     Text(
                         text = mCart.product_title!!,
-                        style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Default), overflow = TextOverflow.Ellipsis, maxLines = 1,
+                        style = TextStyle(fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Default),
+                        overflow = TextOverflow.Ellipsis, maxLines = 1,
                         modifier = Modifier.width(160.dp)
                     )
 
-                    Icon(painter = painterResource(id = R.drawable.delete), contentDescription = "Delete Item", modifier = Modifier
-//                            .size(25.dp)
+                    Icon(painter = painterResource(id = R.drawable.delete),
+                        contentDescription = "Delete Item",
+                        modifier = Modifier
+                            .size(25.dp)
                         .clickable {
 
                             //deleting item from cart using product's title
@@ -159,7 +171,10 @@ fun CartCardItem(mCart: MCart,viewModel: CartScreenViewModel,
 
                 Text(
                     text = mCart.product_description!!,
-                    style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Normal, fontFamily = FontFamily.Default), overflow = TextOverflow.Ellipsis, maxLines = 1,
+                    style = TextStyle(fontSize = 12.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = FontFamily.Default)
+                    , overflow = TextOverflow.Ellipsis, maxLines = 1,
                     modifier = Modifier.width(180.dp))
 
                 Row(modifier = Modifier
@@ -171,7 +186,8 @@ fun CartCardItem(mCart: MCart,viewModel: CartScreenViewModel,
 
                     Text(
                         text = "₹${DecimalFormat("#,##,###").format(mCart.product_price!!.toDouble())}",
-                        style = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                        style = TextStyle(fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold)
                     )
 
                     Surface(modifier = Modifier
@@ -180,7 +196,8 @@ fun CartCardItem(mCart: MCart,viewModel: CartScreenViewModel,
                         shape = RoundedCornerShape(12.dp),
                         color = Color(0xFFECE2E2)
                     ) {
-                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceEvenly) {
+                        Row(verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceEvenly) {
 
                             val enabledPlus = countState.value!! <= 4
                             val enabledMinus = countState.value!! > 1
@@ -191,8 +208,12 @@ fun CartCardItem(mCart: MCart,viewModel: CartScreenViewModel,
                                 navController.popBackStack()
                                 navController.navigate(BottomNavScreens.Cart.route)
                             }
-                            Text(text = countState.value.toString(), style = TextStyle(fontWeight = FontWeight.Bold, fontFamily = FontFamily.Default))
-                            PlusMinusButtons(icon = R.drawable.add, desc = "Add", enabled = enabledPlus && isInStock){
+                            Text(text = countState.value.toString(),
+                                style = TextStyle(fontWeight = FontWeight.Bold,
+                                    fontFamily = FontFamily.Default))
+
+                            PlusMinusButtons(icon = R.drawable.add, desc = "Add",
+                                enabled = enabledPlus && isInStock){
                                 countState.value = countState.value!! + 1
 
                                 if (countState.value!! == 5) Toast.makeText(context,"Maximum quantity per item reached",Toast.LENGTH_SHORT).show()

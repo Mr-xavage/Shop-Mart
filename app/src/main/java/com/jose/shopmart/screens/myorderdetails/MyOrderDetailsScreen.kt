@@ -33,17 +33,23 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.PillButton
+import com.jose.shopmart.component.ProgressBox
+import com.jose.shopmart.navigation.BottomNavScreens
 import java.text.DecimalFormat
 
 @Composable
@@ -79,7 +85,7 @@ fun MyOrderDetailsScreen(navController: NavController,
             )
         }, modifier = Modifier
             .fillMaxSize(),
-        backgroundColor = ShopKartUtils.offWhite
+        backgroundColor = ShopKartUtils.Lemon
     ) { innerPadding ->
 
         Column(
@@ -175,7 +181,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                             style = TextStyle(
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
-                                fontFamily = roboto
+                                fontFamily = FontFamily.Serif
                             )
                         )
 
@@ -203,7 +209,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -223,7 +229,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                             style = TextStyle(
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
-                                fontFamily = roboto
+                                fontFamily = FontFamily.Default
                             )
                         )
 
@@ -232,7 +238,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                             style = TextStyle(
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
-                                fontFamily = roboto
+                                fontFamily =FontFamily.Default
                             )
                         )
                     }
@@ -265,7 +271,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         ),
                         color = Color.Black.copy(alpha = 0.5f)
                     )
@@ -275,7 +281,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -284,7 +290,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -293,7 +299,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                 }
@@ -323,7 +329,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         ),
                         color = Color.Black.copy(alpha = 0.5f)
                     )
@@ -332,7 +338,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -340,7 +346,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -348,7 +354,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                 }
@@ -378,7 +384,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         ),
                         color = Color.Black.copy(alpha = 0.5f)
                     )
@@ -388,7 +394,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -396,7 +402,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
 
@@ -405,7 +411,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -413,7 +419,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                     Text(
@@ -421,7 +427,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                         style = TextStyle(
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            fontFamily = roboto
+                            fontFamily = FontFamily.Default
                         )
                     )
                 }
@@ -436,7 +442,11 @@ fun MyOrderDetailsScreen(navController: NavController,
             AnimatedVisibility(visible = isEnabled.value) {
 
                 PillButton(
-                    title = "Cancel Order", modifier = Modifier.padding(top = 30.dp, bottom = 20.dp), color = ShopKartUtils.black.toInt(), textColor = Color.Red) { openDialog.value = true }
+                    title = "Cancel Order",
+                    modifier = Modifier.padding(top = 30.dp,
+                        bottom = 20.dp),
+                    color = ShopKartUtils.Plum,
+                    textColor = Color.Red) { openDialog.value = true }
             }
 
             //Calling Alert Dialog
@@ -455,7 +465,7 @@ fun MyOrderDetailsScreen(navController: NavController,
                 button2 = "Cancel",
                 toast = "Order Cancelled")
 
-//            Spacer(modifier = Modifier.height(120.dp))
+            Spacer(modifier = Modifier.height(120.dp))
         }
     }
 }
@@ -466,19 +476,33 @@ fun ShopKartDialog(openDialog: MutableState<Boolean>, onTap: () -> Unit,context:
     if (openDialog.value) {
         AlertDialog(
             onDismissRequest = { openDialog.value = false },
-            title = { Text(text = title, style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = roboto)) },
-            text = { Text(text = subTitle, style = TextStyle(fontWeight = FontWeight.Bold, fontFamily = roboto)) },
+            title = { Text(text = title,
+                style = TextStyle(fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.Default)) },
+
+            text = { Text(text = subTitle,
+                style = TextStyle(fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.Default)) },
             confirmButton = {
                 TextButton(onClick = { onTap.invoke()
                     openDialog.value = false
                     Toast.makeText(context,toast,Toast.LENGTH_SHORT).show() },
                     colors = ButtonDefaults.buttonColors(Color.Black),
-                    shape = RoundedCornerShape(12.dp)){ Text(text = button1, color = Color.White,style = TextStyle(fontSize = 12.sp,fontWeight = FontWeight.Bold, fontFamily = roboto)) }
+                    shape = RoundedCornerShape(12.dp)){ Text(text = button1,
+                    color = Color.White,
+                    style = TextStyle(fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default)) }
             },
             dismissButton = {
                 TextButton(onClick = { openDialog.value = false },
                     colors = ButtonDefaults.buttonColors(Color.Black),
-                    shape = RoundedCornerShape(12.dp)){ Text(text = button2, color = Color.White, style = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Bold, fontFamily = roboto)) }
+                    shape = RoundedCornerShape(12.dp)){ Text(text = button2,
+                    color = Color.White,
+                    style = TextStyle(fontSize = 12.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Default)) }
             },
             shape = RoundedCornerShape(12.dp)
         )

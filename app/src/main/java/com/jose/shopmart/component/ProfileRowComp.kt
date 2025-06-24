@@ -26,11 +26,25 @@ fun ProfileRowComp(leadingIcon: Int? = null, title: String,onClick:() -> Unit) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(60.dp)
-        .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 8.dp)
-        .clickable { onClick.invoke() }, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+        .padding(start = 20.dp,
+            end = 20.dp,
+            top = 10.dp,
+            bottom = 8.dp)
+
+        .clickable { onClick.invoke() },
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween) {
         leadingIcon?.let { painterResource(id = it) }
+
             ?.let { Icon(painter = it, contentDescription = title) }
-        Text(text = title, style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Default))
-        Icon(painter = painterResource(id = R.drawable.arrow_forward), contentDescription = "Arrow Forward", tint = Color.Black.copy(alpha = 0.5f))
+
+        Text(text = title,
+            style = TextStyle(fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Default))
+
+        Icon(painter = painterResource(id = R.drawable.arrow_forward),
+            contentDescription = "Arrow Forward",
+            tint = Color.Black.copy(alpha = 0.5f))
     }
 }

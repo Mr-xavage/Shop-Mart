@@ -1,9 +1,7 @@
 package com.jose.shopmart.screens.admin
 
 
-import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +18,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -29,7 +26,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -42,14 +38,11 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.component.BackButton
-import com.jose.shopmart.component.DeliveryStatusCard
 import com.jose.shopmart.component.PillButton
 import com.jose.shopmart.models.MAttendance
-import com.jose.shopmart.models.MOrder
 import com.jose.shopmart.navigation.BottomNavScreens
-import com.jose.shopmart.screens.admin.orderstatus.OrderStatusViewModel
-import com.jose.shopmart.screens.search.SearchBox
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -70,12 +63,11 @@ fun EmployeeAttendance(navController: NavHostController,viewModel: AdminScreenVi
     Scaffold(topBar = { BackButton(navController = navController,
         topBarTitle = "Attendance",
         spacing = 60.dp) },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Yellow100) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)
-            .padding(20.dp),
-            verticalArrangement = Arrangement.Center,
+            .padding(20.dp), verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
 
             Surface(modifier = Modifier
@@ -83,150 +75,50 @@ fun EmployeeAttendance(navController: NavHostController,viewModel: AdminScreenVi
                 .height(80.dp), shape = RoundedCornerShape(12.dp)) {
 
                 Column(modifier = Modifier
-                    .padding(20.dp), verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.CenterHorizontally) {
+                    .padding(20.dp),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally) {
 
                     Row(modifier = Modifier
                         .fillMaxWidth()
-                        .height(50.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center) {
+                        .height(50.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
 
                         Text(text = "DAY : ",
                             style = TextStyle(fontSize = 22.sp,
                                 fontWeight = FontWeight.Bold,
-                                fontFamily = FontFamily.Default))
+                                fontFamily = FontFamily.Default
+                            ))
+
                         Text(text = today,
                             style = TextStyle(fontSize = 22.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Default))
-
 
                     }
                 }
             }
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .height(100.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+                .height(100.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween) {
 
                 Text(text = "Employee List",
                     style = TextStyle(fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        fontFamily =
-                            import android.widget.Toast
-                                    import androidx.compose.foundation.background
-                                    import androidx.compose.foundation.layout.Arrangement
-                                    import androidx.compose.foundation.layout.Column
-                                    import androidx.compose.foundation.layout.Row
-                                    import androidx.compose.foundation.layout.fillMaxSize
-                                    import androidx.compose.foundation.layout.fillMaxWidth
-                                    import androidx.compose.foundation.layout.padding
-                                    import androidx.compose.foundation.layout.size
-                                    import androidx.compose.foundation.lazy.LazyColumn
-                                    import androidx.compose.foundation.lazy.items
-                                    import androidx.compose.foundation.shape.RoundedCornerShape
-                                    import androidx.compose.material.Icon
-                                    import androidx.compose.material.IconButton
-                                    import androidx.compose.material.Scaffold
-                                    import androidx.compose.runtime.Composable
-                                    import androidx.compose.runtime.mutableStateOf
-                                    import androidx.compose.runtime.remember
-                                    import androidx.compose.ui.Alignment
-                                    import androidx.compose.ui.Modifier
-                                    import androidx.compose.ui.draw.clip
-                                    import androidx.compose.ui.graphics.Color
-                                    import androidx.compose.ui.platform.LocalContext
-                                    import androidx.compose.ui.res.painterResource
-                                    import androidx.compose.ui.unit.dp
-                                    import androidx.hilt.navigation.compose.hiltViewModel
-                                    import androidx.navigation.NavHostController
-                                    import com.shoppy.shopkart.R
-                                    import com.shoppy.shopkart.ShopKartUtils
-                                    import com.shoppy.shopkart.components.BackButton
-                                    import com.shoppy.shopkart.components.DeliveryStatusCard
-                                    import com.shoppy.shopkart.models.MOrder
-                                    import com.shoppy.shopkart.navigation.BottomNavScreens
-                                    import com.shoppy.shopkart.screens.search.SearchBox
-
-                                    @Composable
-                                    fun OnTheWayItems(navHostController: NavHostController, viewModel: OrderStatusViewModel = hiltViewModel()){
-
-                                        val onTheWayItemsList = remember { mutableStateOf(emptyList<MOrder>()) }
-
-                                        val searchByOrderId = remember { mutableStateOf("") }
-
-                                        val context = LocalContext.current
-
-                                        onTheWayItemsList.value = viewModel.fireStatus.value.data?.toList()?.filter { mOrder ->
-
-                                            mOrder.delivery_status == "On The Way"
-
-                                        }!!
-
-                                        Scaffold(modifier = Modifier.fillMaxSize(), topBar = { BackButton(navController = navHostController, topBarTitle = "On The Way Items", spacing = 35.dp) }, backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
-
-                                            Column(modifier = Modifier
-                                                .padding(innerPadding)
-                                                .fillMaxSize(), verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.CenterHorizontally) {
-
-                                                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-
-                                                    SearchBox(value = searchByOrderId.value,
-                                                        onChange = searchByOrderId,
-                                                        leadingIcon = R.drawable.ic_search,
-                                                        placeHolder = "Search by Order Id",
-                                                        customAutoFocus = false)
-
-                                                    //Search Button
-                                                    IconButton(modifier = Modifier
-                                                        .size(55.dp)
-                                                        .clip(RoundedCornerShape(12.dp))
-                                                        .background(Color.Black),
-                                                        onClick = {
-                                                            onTheWayItemsList.value = viewModel.fireStatus.value.data?.toList()?.filter { mOrder ->
-                                                                mOrder.order_id == searchByOrderId.value
-                                                            }!!
-                                                        }){
-                                                        Icon(
-                                                            painter = painterResource(id = R.drawable.ic_search),
-                                                            contentDescription = "Search",
-                                                            tint = Color.White
-                                                        )
-                                                    }
-                                                }
-
-                                                LazyColumn{
-                                                    items(items = onTheWayItemsList.value){ ordered ->
-                                                        DeliveryStatusCard(ordered = ordered,
-                                                            buttonTitle = "Mark Delivered",
-                                                            navHostController = navHostController){
-                                                            viewModel.markDelivered(
-                                                                userId = ordered.user_id!!,
-                                                                product_title = ordered.product_title!!
-                                                            ) {
-                                                                navHostController.popBackStack()
-                                                                navHostController.navigate(BottomNavScreens.OnTheWayItems.route)
-                                                                Toast.makeText(context, "Item marked as Delivered", Toast.LENGTH_SHORT).show()
-                                                            }
-                                                        }
-                                                    }
-                                                }
-
-                                            }
-                                        }
-                                    }),
+                        fontFamily = FontFamily.Default),
                     modifier = Modifier.padding(10.dp))
-                PillButton(title = "Clear",
-                    color = ShopKartUtils.black.toInt(),
+
+                PillButton(
+                    title = "Clear",
+                    color = com.jose.shopmart.ShopKartUtils.Orange100,
                     modifier = Modifier.width(100.dp)){ viewModel.clearAttendance(context = context) }
             }
 
             LazyColumn {
                 items(items = attendanceList.value) { card ->
 
-                    AttendanceItem(card = card,
-                        day = today,
-                        viewModel = viewModel,
-                        navController = navController)
+                    AttendanceItem(card = card, day = today, viewModel = viewModel, navController = navController)
 
                 }
             }
@@ -298,7 +190,8 @@ fun AttendanceItem(card: MAttendance,day: String,navController: NavHostControlle
                 .size(60.dp)){
                 Surface(modifier = Modifier.fillMaxSize(),
                     shape = RoundedCornerShape(15.dp),
-                    border = BorderStroke(3.dp,Color.Black)) {
+                    border = BorderStroke(3.dp,
+                        Color.Black)) {
 
                     Icon(
                         painter = painterResource(id = R.drawable.profile),
@@ -314,10 +207,7 @@ fun AttendanceItem(card: MAttendance,day: String,navController: NavHostControlle
             Column(modifier = Modifier
                 .fillMaxHeight()
                 .width(210.dp)
-                .padding(start = 8.dp,
-                    end = 8.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start) {
+                .padding(start = 8.dp, end = 8.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.Start) {
 
                 Text(text = "Name : ${card.name}",
                     style = TextStyle(fontSize = 15.sp,
@@ -350,10 +240,10 @@ fun AttendanceItem(card: MAttendance,day: String,navController: NavHostControlle
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start) {
 
-                PillButton(title = "P",
-                    color = ShopKartUtils.black.toInt(),
-                    enabled = isEnabledP.value,
-                    modifier = Modifier
+                PillButton(
+                    title = "P",
+                    color = com.jose.shopmart.ShopKartUtils.SkyBlue,
+                    enabled = isEnabledP.value, modifier = Modifier
                     .fillMaxWidth()
                     .height(40.dp)){
                     viewModel.presentOrAbsent(PAB = "Present", orderId = card.id!!, Day = day){
@@ -362,8 +252,10 @@ fun AttendanceItem(card: MAttendance,day: String,navController: NavHostControlle
                     }
                 }
                 Spacer(modifier = Modifier.height(5.dp))
-                PillButton(title = "AB",
-                    color = ShopKartUtils.black.toInt(),
+
+                PillButton(
+                    title = "AB",
+                    color = ShopKartUtils.Orange900,
                     enabled = isEnabledAB.value,
                     modifier = Modifier
                     .fillMaxWidth()

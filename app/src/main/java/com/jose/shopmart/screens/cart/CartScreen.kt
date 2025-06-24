@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.firebase.auth.FirebaseAuth
+import com.jose.shopmart.R
 import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.component.CartCard
 import com.jose.shopmart.component.LoadingComp2
@@ -57,7 +58,7 @@ fun CartScreen(navController: NavHostController, viewModel: CartScreenViewModel 
     }
 
 
-    Scaffold(topBar = {CartAppBar()}, backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+    Scaffold(topBar = {CartAppBar()}, backgroundColor = ShopKartUtils.Red200) { innerPadding ->
 
         if (!viewModel.fireCart.value.loading!!) {
 
@@ -97,7 +98,10 @@ fun CartScreen(navController: NavHostController, viewModel: CartScreenViewModel 
                         .padding(bottom = 10.dp)
                         .clip(CircleShape))
 
-                Text(text = "Your Cart Is Empty\n  Add Something!", style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, fontFamily = roboto))
+                Text(text = "Your Cart Is Empty\n  Add Something!",
+                    style = TextStyle(fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily()))
             }
 
         }else{
@@ -162,7 +166,7 @@ fun CartBottomBar(totalAmount: String,navHostController: NavHostController){
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        PillButton(title = "Check Out", color = ShopKartUtils.black.toInt()) {
+        PillButton(title = "Check Out", color = ShopKartUtils.IceBlue,) {
             navHostController.navigate(BottomNavScreens.AddressScreen.route)
         }
 

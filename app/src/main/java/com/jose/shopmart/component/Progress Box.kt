@@ -37,6 +37,8 @@ fun ProgressBox(number: String,title: String,color: Color) {
                     modifier = Modifier.padding(top = 1.dp))
             }
         }
-        Text(text = title,style = TextStyle(fontSize = 14.sp, fontFamily = FontFamily.Default))
+        Text(text = title,
+            style = TextStyle(fontSize = 14.sp,
+                fontFamily = FontFamily.Default))
     }
 }

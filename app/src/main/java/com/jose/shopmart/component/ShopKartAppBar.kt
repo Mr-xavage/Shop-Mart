@@ -52,7 +52,7 @@ fun ShopKartAppBar(userName: String?, profile_url: String?, onClick: () -> Unit 
     Surface(modifier = Modifier
         .fillMaxWidth()
         .height(170.dp),
-        color = ShopKartUtils.offWhite) {
+        color = ShopKartUtils.SoftBlue,) {
 
         Column(modifier = Modifier
             .fillMaxSize()

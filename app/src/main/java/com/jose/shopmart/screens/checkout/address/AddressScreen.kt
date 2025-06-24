@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -28,15 +27,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.PillButton
+import com.jose.shopmart.component.ProgressBox
+import com.jose.shopmart.navigation.BottomNavScreens
 
 @Composable
 fun AddressScreen(navController: NavController,viewModel: AddressViewModel = androidx.lifecycle.viewmodel.compose.viewModel()){
@@ -51,7 +56,11 @@ fun AddressScreen(navController: NavController,viewModel: AddressViewModel = and
         address.value = it
     }
 
-    Scaffold(topBar = { BackButton(navController = navController, topBarTitle = "Address")}, backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+    Scaffold(topBar = {
+        BackButton(navController = navController,
+            topBarTitle = "Address")
+    },
+        backgroundColor = ShopKartUtils.Rose) { innerPadding ->
 
         Column(modifier = Modifier.padding(innerPadding),
             verticalArrangement = Arrangement.Top,
@@ -101,11 +110,12 @@ fun AddressScreen(navController: NavController,viewModel: AddressViewModel = and
 
                     Row(modifier = Modifier
                         .fillMaxWidth()
-                        .height(25.dp),verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+                        .height(25.dp),verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center) {
 
                         Icon(imageVector = Icons.Rounded.LocationOn, contentDescription = "Deliver To")
 
-                        Text(text = "Deliver To", style = TextStyle(fontFamily = roboto))
+                        Text(text = "Deliver To", style = TextStyle(fontFamily = FontFamily.Default))
 
                         Spacer(modifier = Modifier.width(200.dp))
 
@@ -114,13 +124,29 @@ fun AddressScreen(navController: NavController,viewModel: AddressViewModel = and
                         }
                     }
 
-                    Text(text = name.value, style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, fontFamily = roboto),modifier = Modifier.padding(start = 12.dp))
-                    Text(text = address.value, maxLines = 3, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = 12.dp,bottom = 12.dp), style = TextStyle(fontFamily = roboto))
-                    Text(text = "+91 ${phone.value}",modifier = Modifier.padding(start = 12.dp), style = TextStyle(fontFamily = roboto))
+                    Text(text = name.value,
+                        style = TextStyle(fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            fontFamily = FontFamily.Default),
+                        modifier = Modifier.padding(start = 12.dp))
+
+                    Text(text = address.value,
+                        maxLines = 3,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(start = 12.dp,bottom = 12.dp),
+                        style = TextStyle(fontFamily =FontFamily.Default))
+
+                    Text(text = "+91 ${phone.value}",
+                        modifier = Modifier.padding(start = 12.dp),
+                        style = TextStyle(fontFamily = FontFamily.Default))
                 }
             }
 
-            PillButton(title = "Continue", color = ShopKartUtils.black.toInt(), modifier = Modifier.padding(top = 10.dp)){
+            PillButton(
+                title = "Continue",
+                color = ShopKartUtils.Orange700,
+                modifier = Modifier.padding(top = 10.dp)){
+
                 if (address.value.isEmpty()) {
                     Toast.makeText(context, "Add Address", Toast.LENGTH_LONG).show()
                 }else if (phone.value.isEmpty()){
@@ -137,5 +163,5 @@ fun AddressScreen(navController: NavController,viewModel: AddressViewModel = and
 @Preview
 @Composable
 fun Pre(){
-//    AddressScreen(navController = rememberNavController())
+    AddressScreen(navController = rememberNavController())
 }

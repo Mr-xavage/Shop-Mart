@@ -26,9 +26,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -40,6 +40,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.google.firebase.auth.FirebaseAuth
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.OrderSummaryCard
+import com.jose.shopmart.component.PillButton
+import com.jose.shopmart.component.ProgressBox
+import com.jose.shopmart.models.MCart
+import com.jose.shopmart.navigation.BottomNavScreens
 import java.text.DecimalFormat
 
 @Composable
@@ -97,10 +104,16 @@ fun OrderSummaryScreen(navController: NavHostController,viewModel: OrderSummaryS
         }
     }
 
-    Scaffold(topBar = { BackButton(navController = navController, topBarTitle = "Order Summary", spacing = 60.dp) },
-        backgroundColor = ShopKartUtils.offWhite, bottomBar = { SummaryBottomBar(totalAmount = totalAmount.value,navController = navController) }) { innerPadding ->
+    Scaffold(topBar = { BackButton(navController = navController,
+        topBarTitle = "Order Summary",
+        spacing = 60.dp) },
+        backgroundColor = ShopKartUtils.SoftBlue,
+        bottomBar = { SummaryBottomBar(totalAmount = totalAmount.value,
+            navController = navController) }) { innerPadding ->
 
-        ConstraintLayout(constraintSet = constraints, modifier = Modifier.padding(innerPadding).fillMaxSize(), animateChanges = true) {
+        ConstraintLayout(constraintSet = constraints,
+            modifier = Modifier.padding(innerPadding).fillMaxSize(),
+            animateChanges = true) {
 
             //Progress Indicator 1-2-3
             Surface(modifier = Modifier
@@ -151,7 +164,8 @@ fun OrderSummaryScreen(navController: NavHostController,viewModel: OrderSummaryS
                 }
             }
 
-            OrderSummaryCard(cardList = cartList, viewModel = viewModel, modifier = Modifier.layoutId("ItemsLazyList")){ price ->
+            OrderSummaryCard(cardList = cartList, viewModel = viewModel,
+                modifier = Modifier.layoutId("ItemsLazyList")){ price ->
 
                 totalAmount.value = price
 
@@ -168,16 +182,27 @@ fun SummaryBottomBar(totalAmount:Int,navController: NavController){
         .fillMaxWidth()
         .height(120.dp)) {
 
-        Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceEvenly, horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            Row(modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center) {
 
                 Icon(imageVector = Icons.Rounded.Info, contentDescription = "Note")
-                Text(text = "Note: ₹100 fee is applied for all the items in the cart", modifier = Modifier.padding(start = 5.dp) ,style = TextStyle(fontSize = 13.sp, fontWeight = FontWeight.Normal, fontFamily = roboto), color = Color.Black.copy(alpha = 0.5f))
+                Text(text = "Note: ₹100 fee is applied for all the items in the cart",
+                    modifier = Modifier.padding(start = 5.dp) ,
+                    style = TextStyle(fontSize = 13.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = FontFamily.Serif),
+                    color = Color.Black.copy(alpha = 0.5f))
             }
 
             //280 is price with delivery charge and GST 100 + 180
-            PillButton(title = "Continue", color = ShopKartUtils.black.toInt()){ navController.navigate(BottomNavScreens.PaymentScreen.route + "/${totalAmount + 280}") }
+            PillButton(
+                title = "Continue",
+                color = ShopKartUtils.Purple200,){ navController.navigate(BottomNavScreens.PaymentScreen.route + "/${totalAmount + 280}") }
         }
 
     }
@@ -185,12 +210,19 @@ fun SummaryBottomBar(totalAmount:Int,navController: NavController){
 
 @Composable
 fun RowComp(title: String,price:String,space: Dp,modifier: Modifier = Modifier) {
-    Row(modifier = modifier.padding(5.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
+    Row(modifier = modifier.padding(5.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween) {
 
-        Text(text = title, style = TextStyle(fontSize = 15.sp, fontWeight = FontWeight.Bold, fontFamily = roboto))
+        Text(text = title,
+            style = TextStyle(fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Default))
 
         Spacer(modifier = Modifier.width(space))
 
-        Text(text = price, style = TextStyle(fontSize = 15.sp, fontWeight = FontWeight.Bold), fontFamily = roboto)
+        Text(text = price, style = TextStyle(fontSize = 15.sp,
+            fontWeight = FontWeight.Bold),
+            fontFamily = FontFamily.Serif)
     }
 }

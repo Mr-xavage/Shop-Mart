@@ -78,6 +78,7 @@ dependencies {
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.constraintlayout.compose.android)
+    implementation(libs.play.services.auth)
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.navigation.compose)
 

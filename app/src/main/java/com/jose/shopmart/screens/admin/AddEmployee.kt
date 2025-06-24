@@ -21,9 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.ShopKartUtils.Black
 import com.jose.shopmart.component.BackButton
 import com.jose.shopmart.component.PillButton
 import com.jose.shopmart.component.TextBox
+import com.jose.shopmart.ui.theme.Coral
 
 
 @Composable
@@ -42,7 +45,7 @@ fun AddEmployee(navHostController: NavHostController,viewModel: AdminScreenViewM
     Scaffold(modifier = Modifier.fillMaxSize(),
         topBar = { BackButton(navController = navHostController,
             topBarTitle = "Add Employee", spacing = 50.dp) },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = com.jose.shopmart.ShopKartUtils.IceBlue) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)
@@ -54,8 +57,9 @@ fun AddEmployee(navHostController: NavHostController,viewModel: AdminScreenViewM
             TextBox(value = employeeAddress.value, labelId = "Employee address", onChange = employeeAddress, leadingIcon = R.drawable.address)
             TextBox(value = employeePhone.value, labelId = "Employee phone", onChange = employeePhone, leadingIcon = R.drawable.call)
 
-            PillButton(title = "Add Employee",
-                color = ShopKartUtils.black.toInt(),
+            PillButton(
+                title = "Add Employee",
+                color = Coral,
                 modifier = Modifier.padding(top = 10.dp,
                     bottom = 10.dp)){
                 if (employeeName.value.isNotEmpty() &&

@@ -134,7 +134,7 @@ fun HomeScreen(
                 navController.navigate(BottomNavScreens.SearchScreen.route)
             }
         },
-        backgroundColor = ShopKartUtils.offWhite
+        backgroundColor = ShopKartUtils.Red200
     ) { innerPadding ->
 
         Box(

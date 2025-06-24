@@ -38,7 +38,6 @@ import com.jose.shopmart.component.GalleryLaunchComp
 import com.jose.shopmart.component.PillButton
 import com.jose.shopmart.component.SelectedImageItem
 import com.jose.shopmart.component.TextBox2
-import com.jose.shopmart.screens.admin.ShopKartUtils
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -76,11 +75,13 @@ fun AddProductSliderEmpl(navHostController: NavHostController,viewModel: Employe
     Scaffold(
         topBar = {
             //Back Button
-            BackButton(navController = navHostController, topBarTitle = "Add Product/Slider", spacing = 30.dp)
+            BackButton(navController = navHostController,
+                topBarTitle = "Add Product/Slider",
+                spacing = 30.dp)
         },
         modifier = Modifier
             .fillMaxSize(),
-        backgroundColor = ShopKartUtils.offWhite
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Yellow100
     ) { innerPadding ->
 
         Column(
@@ -93,7 +94,8 @@ fun AddProductSliderEmpl(navHostController: NavHostController,viewModel: Employe
 
             //Upload Sliders text
             Text(
-                text = "Upload Slider", modifier = Modifier.padding(start = 30.dp, top = 20.dp),
+                text = "Upload Slider", modifier = Modifier.padding(start = 30.dp,
+                    top = 20.dp),
                 style = TextStyle(
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
@@ -111,7 +113,7 @@ fun AddProductSliderEmpl(navHostController: NavHostController,viewModel: Employe
 
             PillButton(
                 title = "Post Slider",
-                color = ShopKartUtils.black.toInt(),
+                color = com.jose.shopmart.ShopKartUtils.Red200,
                 modifier = Modifier
                     .padding(bottom = 20.dp, top = 10.dp)
                     .align(Alignment.CenterHorizontally)
@@ -132,7 +134,9 @@ fun AddProductSliderEmpl(navHostController: NavHostController,viewModel: Employe
 
             //Upload Product text
             Text(
-                text = "Upload Product", modifier = Modifier.padding(start = 30.dp, top = 20.dp),
+                text = "Upload Product",
+                modifier = Modifier.padding(start = 30.dp,
+                    top = 20.dp),
                 style = TextStyle(
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold,
@@ -238,7 +242,7 @@ fun AddProductSliderEmpl(navHostController: NavHostController,viewModel: Employe
 
                 PillButton(
                     title = "Post Product",
-                    color = ShopKartUtils.black.toInt(),
+                    color = com.jose.shopmart.ShopKartUtils.Red300,
                     modifier = Modifier
                         .padding(bottom = 25.dp)
                         .align(Alignment.CenterHorizontally)

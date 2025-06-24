@@ -1,6 +1,5 @@
 package com.jose.shopmart.navigation
 
-
 import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -12,8 +11,26 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.jose.shopmart.navigation.BottomNavScreens.AddEmployee
+import com.jose.shopmart.navigation.BottomNavScreens.AddProductSliderAdmin
+import com.jose.shopmart.navigation.BottomNavScreens.AddProductSliderEmpl
+import com.jose.shopmart.navigation.BottomNavScreens.AddRemoveBrandAdmin
+import com.jose.shopmart.navigation.BottomNavScreens.AddRemoveBrandEmpl
+import com.jose.shopmart.navigation.BottomNavScreens.AddressScreen
+import com.jose.shopmart.navigation.BottomNavScreens.AdminScreen
+import com.jose.shopmart.navigation.BottomNavScreens.DeliveredItems
+import com.jose.shopmart.navigation.BottomNavScreens.DeliveredItemsEmp
+import com.jose.shopmart.navigation.BottomNavScreens.EditAddressScreen
+import com.jose.shopmart.navigation.BottomNavScreens.EmployeeAttendance
+import com.jose.shopmart.navigation.BottomNavScreens.EmployeeScreen
 import com.jose.shopmart.navigation.BottomNavScreens.OnTheWayItems
+import com.jose.shopmart.navigation.BottomNavScreens.OnTheWayItemsEmp
+import com.jose.shopmart.navigation.BottomNavScreens.OrderSuccessScreen
+import com.jose.shopmart.navigation.BottomNavScreens.OrderSummaryScreen
 import com.jose.shopmart.navigation.BottomNavScreens.OrderedItems
+import com.jose.shopmart.navigation.BottomNavScreens.OrderedItemsEmp
+import com.jose.shopmart.navigation.BottomNavScreens.PaymentScreen
+import com.jose.shopmart.navigation.BottomNavScreens.SearchScreen
 import com.jose.shopmart.screens.AboutScreen
 import com.jose.shopmart.screens.admin.AddEmployee
 import com.jose.shopmart.screens.admin.AddProductSliderAdmin

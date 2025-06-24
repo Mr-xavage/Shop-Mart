@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.jose.shopmart.models.MCart
 import kotlinx.coroutines.launch
 
 class DetailsScreenViewModel :ViewModel(){

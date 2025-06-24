@@ -16,13 +16,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.models.MOrder
 import java.text.DecimalFormat
 
@@ -84,7 +84,7 @@ fun DeliveryStatusCard(ordered: MOrder,buttonTitle: String, navHostController: N
             if (buttonTitle == "Mark On The Way" || buttonTitle == "Mark Delivered") {
                 PillButton(
                     title = buttonTitle,
-                    color = ShopKartUtils.black.toInt(),
+                    color = Color.Cyan,
                     textSize = 12,
                     modifier = Modifier
                         .height(50.dp)

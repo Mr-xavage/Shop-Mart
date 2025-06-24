@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.google.firebase.auth.FirebaseAuth
+import com.jose.shopmart.R
 import com.jose.shopmart.navigation.NavScreens
 import kotlinx.coroutines.delay
 
@@ -53,6 +54,8 @@ fun SplashScreen(navController: NavController) {
 
             Box(modifier = Modifier.size(80.dp))
             {
+
+
 
                 Image(painter = painterResource(id = R.drawable.logo),
                 contentDescription = "logo",

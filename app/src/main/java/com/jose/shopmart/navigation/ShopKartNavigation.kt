@@ -1,20 +1,22 @@
 package com.jose.shopmart.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.jose.shopmart.screens.ForgotPasswordScreen
 import com.jose.shopmart.screens.SplashScreen
 import com.jose.shopmart.screens.login.LoginScreen2
 import com.jose.shopmart.screens.mainscreenholder.MainScreenHolder
 import com.jose.shopmart.screens.register.RegisterScreen
 
-
 @Composable
 fun ShopKartNavigation(){
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = NavScreens.SplashScreen.name){
+    NavHost(navController = navController,
+        startDestination = NavScreens.SplashScreen.name){
         composable(NavScreens.SplashScreen.name) {
             SplashScreen(navController = navController)
         }

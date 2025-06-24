@@ -57,7 +57,7 @@ class GoogleAuthUiClient(private val context: Context, private val oneTapClient:
     }
 
     private fun buildSignInReq(): BeginSignInRequest{
-        return BeginSignInRequest.Builder().setGoogleIdTokenRequestOptions(GoogleIdTokenRequestOptions.builder()
+        return BeginSignInRequest.Builder().setGoogleIdTokenRequestOptions(com.google.android.gms.auth.api.identity.BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
             .setSupported(true)
             //If true only accounts signed in will be shown
             .setFilterByAuthorizedAccounts(false)

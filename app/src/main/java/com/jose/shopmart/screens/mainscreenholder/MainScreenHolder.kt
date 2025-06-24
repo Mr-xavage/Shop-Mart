@@ -16,6 +16,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.auth.api.identity.Identity
+import com.jose.shopmart.navigation.BottomNavBar
+import com.jose.shopmart.navigation.BottomNavScreens
+import com.jose.shopmart.navigation.BottomNavigation
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable

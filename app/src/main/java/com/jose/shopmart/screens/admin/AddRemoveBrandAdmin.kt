@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.component.BackButton
 import com.jose.shopmart.component.GalleryLaunchComp
 import com.jose.shopmart.component.PillButton
@@ -56,7 +57,7 @@ fun AddRemoveBrandAdmin(
                 spacing = 30.dp
             )
         },
-        backgroundColor = ShopKartUtils.offWhite
+        backgroundColor = com.jose.shopmart.ShopKartUtils.Yellow100
     ) { innerPadding ->
 
         Column(
@@ -82,7 +83,7 @@ fun AddRemoveBrandAdmin(
 
             PillButton(
                 title = "Add Brand",
-                color = ShopKartUtils.black.toInt(),
+                color = com.jose.shopmart.ShopKartUtils.Orange900,
                 modifier = Modifier.padding(bottom = 20.dp, top = 10.dp)
             ) {
                 if (selectedBrandImageUri.value == null) {
@@ -105,7 +106,7 @@ fun AddRemoveBrandAdmin(
             //Remove brand
             TextBox2(value = brandName.value, onChange = brandName, placeHolder = "Brand Name")
 
-            PillButton(title = "Remove Brand", color = ShopKartUtils.black.toInt()) {
+            PillButton(title = "Remove Brand", color = ShopKartUtils.Orchid,) {
                 if (brandName.value.isNotEmpty()) {
                     viewModel.removeBrand(brandName = brandName.value)
                     navHostController.popBackStack()

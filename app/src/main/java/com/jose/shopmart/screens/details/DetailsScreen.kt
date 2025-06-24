@@ -2,7 +2,6 @@ package com.jose.shopmart.screens.details
 
 
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,7 +24,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalConfiguration
@@ -34,13 +32,17 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.google.firebase.auth.FirebaseAuth
+import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.PillButton
 import java.text.DecimalFormat
 
 @Composable
@@ -79,13 +81,29 @@ fun DetailsScreen(
     Scaffold(
         topBar = {
             //Back Button
-            BackButton(navController = navController, category = category, productId = productId, topBarTitle = "Details", spacing = 60.dp)
+            BackButton(navController = navController,
+                category = category,
+                productId = productId,
+                topBarTitle = "Details",
+                spacing = 60.dp)
         },
-        bottomBar = { AddToCart(email = email.value, buTitle = buttonTitle,viewModel = viewModel, url = urlState.value, description = descriptionState.value, title = titleState.value, price = priceState.value, stock = stock, category = category, productId = productId, textColor = textColors) },
+        bottomBar = { AddToCart(email = email.value,
+            buTitle = buttonTitle,
+            viewModel = viewModel,
+            url = urlState.value,
+            description = descriptionState.value,
+            title = titleState.value,
+            price = priceState.value,
+            stock = stock,
+            category = category,
+            productId = productId,
+            textColor = textColors) },
+
         modifier = Modifier
             .width(width.dp)
             .height(height.dp),
-        backgroundColor = ShopKartUtils.offWhite
+
+        backgroundColor = ShopKartUtils.Orange900
     ) { innerPadding ->
 
         Column(
@@ -122,17 +140,24 @@ fun DetailsScreen(
 
                 Text(
                     text = productTitle,
-                    style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.ExtraBold, fontFamily = roboto),
+                    style = TextStyle(fontSize = 28.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontFamily = FontFamily.Serif),
                     modifier = Modifier.padding(top = 22.dp))
 
                 Text(
                     text = "Description : ",
-                    style = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Bold, fontFamily = roboto),
+                    style = TextStyle(fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Serif),
                     modifier = Modifier.padding(top = 12.dp))
 
                 Text(
                     text = productDescription,
-                    style = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Normal, fontFamily = roboto, color = Color.Black.copy(alpha = 0.5f)),
+                    style = TextStyle(fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = FontFamily.Serif,
+                        color = Color.Black.copy(alpha = 0.5f)),
 //                    maxLines = 8, overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.wrapContentHeight())
 
@@ -153,7 +178,9 @@ fun AddToCart(email: String,buTitle: String,viewModel: DetailsScreenViewModel,ur
 
     }else{
 
-        Surface(modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 25.dp),
+        Surface(modifier = Modifier.padding(start = 20.dp,
+            end = 20.dp,
+            bottom = 25.dp),
             color = Color.Transparent) {
 
 
@@ -174,7 +201,7 @@ fun AddToCart(email: String,buTitle: String,viewModel: DetailsScreenViewModel,ur
                             text = "Price : ",
                             style = TextStyle(
                                 fontWeight = FontWeight.Bold,
-                                fontFamily = roboto
+                                fontFamily = FontFamily.Serif
                             )
                         )
                         Text(
@@ -182,7 +209,7 @@ fun AddToCart(email: String,buTitle: String,viewModel: DetailsScreenViewModel,ur
                             style = TextStyle(
                                 fontSize = 22.sp,
                                 fontWeight = FontWeight.ExtraBold,
-                                fontFamily = roboto
+                                fontFamily = FontFamily.Serif
                             )
                         )
                     })
@@ -191,7 +218,7 @@ fun AddToCart(email: String,buTitle: String,viewModel: DetailsScreenViewModel,ur
 
                 PillButton(
                     title = buTitle,
-                    color = ShopKartUtils.black.toInt(),
+                    color = ShopKartUtils.Rose,
                     textColor = textColor,
                     shape = 16.dp,
                     modifier = Modifier

@@ -28,6 +28,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.component.DeliveryStatusCard
+import com.jose.shopmart.models.MOrder
+import com.jose.shopmart.navigation.BottomNavScreens
+import com.jose.shopmart.screens.search.SearchBox
 
 @Composable
 fun OnTheWayItemsEmp(navHostController: NavHostController, viewModel: OrderStatusEmpViewModel = hiltViewModel()){
@@ -44,15 +51,27 @@ fun OnTheWayItemsEmp(navHostController: NavHostController, viewModel: OrderStatu
 
     }!!
 
-    Scaffold(modifier = Modifier.fillMaxSize(), topBar = { BackButton(navController = navHostController, topBarTitle = "On The Way Items", spacing = 35.dp) }, backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+    Scaffold(modifier = Modifier.fillMaxSize(),
+        topBar = {
+            BackButton(navController = navHostController,
+                topBarTitle = "On The Way Items",
+                spacing = 35.dp)
+        },
+        backgroundColor = ShopKartUtils. Lemon) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)
-            .fillMaxSize(), verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.CenterHorizontally) {
+            .fillMaxSize(), verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            Row(modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center) {
 
-                SearchBox(value = searchByOrderId.value, onChange = searchByOrderId, leadingIcon = R.drawable.ic_search, placeHolder = "Search by Order Id", customAutoFocus = false)
+                SearchBox(value = searchByOrderId.value,
+                    onChange = searchByOrderId,
+                    leadingIcon = R.drawable.ic_search,
+                    placeHolder = "Search by Order Id", customAutoFocus = false)
 
                 //Search Button
                 IconButton(modifier = Modifier

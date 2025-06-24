@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.jose.shopmart.R
+import com.jose.shopmart.ShopKartUtils
 import com.jose.shopmart.component.BackButton
 import com.jose.shopmart.navigation.BottomNavScreens
 import com.jose.shopmart.screens.employee.EmployeeScreen
@@ -38,7 +40,7 @@ fun AdminScreen(navController: NavController) {
 
     Scaffold(topBar = { BackButton(navController = navController,
         topBarTitle = "Admin") },
-        backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+        backgroundColor = ShopKartUtils.Yellow300) { innerPadding ->
 
         Column(modifier = Modifier
             .padding(innerPadding)

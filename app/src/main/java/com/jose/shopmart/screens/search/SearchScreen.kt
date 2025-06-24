@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -55,6 +56,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
+import com.jose.shopmart.R
+import com.jose.shopmart.component.BackButton
+import com.jose.shopmart.models.MProducts
+import com.jose.shopmart.navigation.BottomNavScreens
+import com.jose.shopmart.screens.admin.ShopKartUtils
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import java.text.DecimalFormat
@@ -75,7 +81,8 @@ fun SearchScreen(navController: NavHostController,viewModel: SearchScreenViewMod
 
 //    val isLoading = remember { mutableStateOf(false) }
 
-    Scaffold(topBar = { BackButton(navController = navController, topBarTitle = "Search") }, backgroundColor = ShopKartUtils.offWhite) { innerPadding ->
+    Scaffold(topBar = { BackButton(navController = navController,
+        topBarTitle = "Search") }, backgroundColor = com.jose.shopmart.ShopKartUtils.SoftYellow) { innerPadding ->
 
 //        if (isLoading.value && searchResultList.value.isEmpty()) {
 
@@ -177,7 +184,7 @@ fun SearchScreen(navController: NavHostController,viewModel: SearchScreenViewMod
                     style = TextStyle(
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        fontFamily = roboto
+                        fontFamily = FontFamily.Serif
                     )
                 )
             }
@@ -238,11 +245,13 @@ fun SearchBox(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             backgroundColor = Color.White),
-        textStyle = TextStyle(fontFamily = roboto),
+        textStyle = TextStyle(fontFamily = FontFamily.Serif),
         shape = RoundedCornerShape(10.dp),
         enabled = true,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-        placeholder = { Text(text = placeHolder, color = Color.Black.copy(alpha = 0.4f), style = TextStyle(fontFamily = roboto)) }
+        placeholder = { Text(text = placeHolder,
+            color = Color.Black.copy(alpha = 0.4f),
+            style = TextStyle(fontFamily = FontFamily.Serif)) }
     )
 
     if (customAutoFocus) {
@@ -296,9 +305,25 @@ fun SearchResultCardItem(searchList:MProducts,navController: NavHostController){
                 .fillMaxSize()
                 .padding(start = 10.dp, end = 10.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.Start) {
 
-                Text(text = searchList.product_title!!, style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, fontFamily = roboto), maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Text(text = searchList.product_description!!, style = TextStyle(fontSize = 15.sp, fontWeight = FontWeight.Normal, fontFamily = roboto, color = Color.Black.copy(alpha = 0.5f)), maxLines = 3, overflow = TextOverflow.Ellipsis)
-                Text(text = "₹${DecimalFormat("#,##,###").format(searchList.product_price!!.toDouble())}", style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold, fontFamily = roboto))
+                Text(text = searchList.product_title!!,
+                    style = TextStyle(fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.Serif),
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis)
+
+                Text(text = searchList.product_description!!,
+                    style = TextStyle(fontSize = 15.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = FontFamily.Serif,
+                        color = Color.Black.copy(alpha = 0.5f)),
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis)
+
+                Text(text = "₹${DecimalFormat("#,##,###").format(searchList.product_price!!.toDouble())}",
+                    style = TextStyle(fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily =FontFamily.Serif))
             }
 
         }
